@@ -36,13 +36,12 @@ ways:
 
 ## Configuration
 
-Clone this repository and open the Makefile in your editor, then follow
-the steps beow:
+Clone this repository and then follow the steps below:
 
 
 ### 1. Configure AWS environment
 
-Fill in the variables at the top of the `Makefile`. For example, your
+Fill in the variables at the top of the `Makefile.vars.example`. For example, your
 variables may look like this:
 
 ```
@@ -50,6 +49,12 @@ LAMBDA_FUNCTION_NAME=cloudwatch-to-slack
 AWS_REGION=us-west-2
 AWS_ROLE=arn:aws:iam::123456789123:role/lambda_exec_role
 AWS_PROFILE=default
+```
+
+When you're done, copy the file to `Makefile.vars`:
+
+```
+$ cp Makefile.vars.example Makefile.vars
 ```
 
 ### 2. Setup Slack hook
@@ -94,7 +99,7 @@ encrypt your Slack hook URL for use in this function:
      http://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html.
 
   2. Encrypt the event collector token using the AWS CLI.
-     $ aws kms encrypt --key-id alias/<KMS key name> --plaintext "<SLACK_HOOK_URL>"
+     `$ aws kms encrypt --key-id alias/<KMS key name> --plaintext "<SLACK_HOOK_URL>"`
 
      Note: You must exclude the protocol from the URL
      (e.g. "hooks.slack.com/services/abc123").

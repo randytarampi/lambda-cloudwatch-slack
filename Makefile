@@ -5,6 +5,8 @@ AWS_ROLE=
 AWS_PROFILE=default
 CONFIG_FILE=deploy.env
 
+-include Makefile.vars
+
 all:
 	npm build
 
