@@ -1,6 +1,7 @@
 *~
 .env
 deploy.env
+Makefile.vars
 npm-debug.log
 
 build/
